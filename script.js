@@ -28,28 +28,30 @@ function gridCreate(size) {
         for (j = 1; j <= size; j++) {
             const cell = document.createElement("div");
             cell.classList.add("cell", `${j}`);
+            changeColor(cell);
+
             row.appendChild(cell); 
         }
         container.appendChild(row); 
     }
 
-    const cellToHover = document.querySelectorAll(".cell");
-    cellToHover.forEach((Node) => {
-        let color = 255;
+    // const cellToHover = document.querySelectorAll(".cell");
+    // cellToHover.forEach((Node) => {
+    //     let color = 255;
         
-        Node.addEventListener("mousedown", (e) => {
-            e.target.style.backgroundColor = `rgb(${color}, ${color}, ${color})`;
-            color -= 25.5;
-        });
+    //     Node.addEventListener("mousedown", (e) => {
+    //         e.target.style.backgroundColor = `rgb(${color}, ${color}, ${color})`;
+    //         color -= 25.5;
+    //     });
 
-        Node.addEventListener("mouseover", (e) => {
-            if (mouse) {
-                e.target.style.backgroundColor = `rgb(${color}, ${color}, ${color})`;
-            color -= 25.5;
-            }
-            else {return}
-        });
-    });
+    //     Node.addEventListener("mouseover", (e) => {
+    //         if (mouse) {
+    //             e.target.style.backgroundColor = `rgb(${color}, ${color}, ${color})`;
+    //         color -= 25.5;
+    //         }
+    //         else {return}
+    //     });
+    // });
 };
 
 function gridDelete() {
@@ -68,6 +70,21 @@ function randomColor() {
 //     return `rgb(${color}, ${color}, ${color})`;
 // }
 
+function changeColor(cell) {
+        let color = 255;
+        
+        cell.addEventListener("mousedown", (e) => {
+            e.target.style.backgroundColor = `rgb(${color}, ${color}, ${color})`;
+            color -= 25.5;
+        });
 
+        cell.addEventListener("mouseover", (e) => {
+            if (mouse) {
+                e.target.style.backgroundColor = `rgb(${color}, ${color}, ${color})`;
+            color -= 25.5;
+            }
+            else {return}
+        });
+}
 
 
